@@ -5,48 +5,134 @@
   <title>แบบทดสอบมันสมองเชิงลึก | มหาวิทยาลัยสิบศิลป์สิริศาสตร์</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body{
-      font-family: 'Anuphan', sans-serif;
-      background:#0f1220;
-      color:#f1f1f1;
-      margin:0;
-      padding:0;
-      line-height:1.8;
-    }
-    header{
-      background:linear-gradient(135deg,#4f46e5,#9333ea);
-      padding:40px 20px;
-      text-align:center;
-    }
-    header h1{font-size:2.2rem;margin:0}
-    header p{opacity:.9}
-    .container{max-width:900px;margin:40px auto;padding:20px}
-    .question{margin-bottom:35px;padding:20px;background:#181c3a;border-radius:16px}
-    .question h3{margin-top:0}
-    .choices label{display:block;margin:8px 0;cursor:pointer}
-    button{
-      background:#22c55e;
-      border:none;
-      padding:14px 28px;
-      font-size:1rem;
-      border-radius:999px;
-      cursor:pointer;
-      font-weight:bold;
-    }
-    button:hover{opacity:.85}
-    .result{
-      margin-top:40px;
-      background:#111827;
-      padding:30px;
-      border-radius:20px;
-    }
-    footer{
-      text-align:center;
-      opacity:.6;
-      margin:60px 0 20px;
-      font-size:.9rem;
-    }
-  </style>
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#0b1020;
+  --card:#141a3a;
+  --accent:#6366f1;
+  --accent2:#22c55e;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+}
+
+*{box-sizing:border-box}
+
+body{
+  font-family:'Anuphan',sans-serif;
+  background:radial-gradient(circle at top, #1e1b4b 0%, var(--bg) 60%);
+  color:var(--text);
+  margin:0;
+  line-height:1.9;
+}
+
+header{
+  padding:64px 20px 48px;
+  text-align:center;
+}
+
+header h1{
+  font-size:2.6rem;
+  margin:0 0 12px;
+  letter-spacing:.5px;
+}
+
+header p{
+  color:var(--muted);
+  max-width:720px;
+  margin:auto;
+}
+
+.container{
+  max-width:960px;
+  margin:0 auto 80px;
+  padding:0 20px;
+}
+
+.intro{
+  background:linear-gradient(135deg,#1e293b,#020617);
+  border-radius:28px;
+  padding:32px;
+  margin-bottom:48px;
+}
+
+.intro strong{color:#c7d2fe}
+
+.question{
+  background:linear-gradient(180deg,var(--card),#0f172a);
+  border-radius:22px;
+  padding:28px 28px 24px;
+  margin-bottom:28px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.question h3{
+  margin:0 0 16px;
+  font-size:1.15rem;
+}
+
+.choices label{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 14px;
+  margin-bottom:10px;
+  border-radius:14px;
+  background:#020617;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.choices label:hover{
+  background:#1e1b4b;
+}
+
+input[type=radio]{
+  accent-color:var(--accent);
+  margin-top:4px;
+}
+
+.action{
+  text-align:center;
+  margin:60px 0;
+}
+
+button{
+  background:linear-gradient(135deg,var(--accent),#8b5cf6);
+  color:white;
+  border:none;
+  padding:18px 42px;
+  font-size:1.05rem;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 20px 40px rgba(99,102,241,.4);
+}
+
+button:hover{transform:translateY(-2px)}
+
+.result{
+  background:linear-gradient(180deg,#020617,#020617);
+  border-radius:32px;
+  padding:40px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+}
+
+.result h1{
+  font-size:3rem;
+  margin-top:0;
+  color:#a5b4fc;
+}
+
+.result h2{margin-top:0}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:40px 20px;
+  font-size:.9rem;
+}
+</style>
 </head>
 <body>
 <header>
