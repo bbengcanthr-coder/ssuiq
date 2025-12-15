@@ -132,6 +132,56 @@ footer{
   padding:40px 20px;
   font-size:.9rem;
 }
+
+
+/* Mobile Optimization */
+@media (max-width: 768px){
+  header{
+    padding:48px 16px 36px;
+  }
+
+  header h1{
+    font-size:1.9rem;
+  }
+
+  .container{
+    padding:0 16px;
+  }
+
+  .intro{
+    padding:24px;
+    border-radius:22px;
+  }
+
+  .question{
+    padding:22px 20px;
+    border-radius:20px;
+  }
+
+  .question h3{
+    font-size:1.05rem;
+  }
+
+  .choices label{
+    font-size:.95rem;
+    padding:12px 12px;
+  }
+
+  button{
+    width:100%;
+    padding:16px 0;
+    font-size:1rem;
+  }
+
+  .result{
+    padding:28px 22px;
+    border-radius:26px;
+  }
+
+  .result h1{
+    font-size:2.2rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -191,14 +241,34 @@ const questions = [
 ];
 
 const quiz=document.getElementById('quiz');
-questions.forEach((o,i)=>{
+let current=0;
+
+function renderQuestion(){
+  quiz.innerHTML='';
+  const o=questions[current];
   let div=document.createElement('div');
   div.className='question';
-  div.innerHTML=`<h3>ข้อ ${i+1}. ${o.q}</h3>`+o.c.map((c,j)=>
-    `<label><input type='radio' name='q${i}' value='${j}'> ${c}</label>`
-  ).join('');
+  div.innerHTML=`<h3>ข้อ ${current+1} / ${questions.length}</h3><h3>${o.q}</h3>`+
+    `<div class='choices'>`+o.c.map((c,j)=>
+      `<label><input type='radio' name='q${current}' value='${j}'> ${c}</label>`
+    ).join('')+`</div>`+
+    `<div class='action'><button type='button' onclick='next()'>ถัดไป</button></div>`;
   quiz.appendChild(div);
+}
+
+renderQuestion();
 });
+
+function next(){
+  const v=document.querySelector(`input[name=q${current}]:checked`);
+  if(!v){alert('กรุณาเลือกคำตอบ');return;}
+  current++;
+  if(current<questions.length){
+    renderQuestion();
+  } else {
+    calculate();
+  }
+}
 
 function calculate(){
   let score=0;
@@ -254,3 +324,4 @@ function calculate(){
 </script>
 </body>
 </html>
+
